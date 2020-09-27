@@ -51,7 +51,7 @@ function search_soft_job(query) {
         }
     }
     xmlHttp.onerror = function(e) {
-        let originSoftJobResult = document.getElementById("Soft Job Content");
+        let originSoftJobResult = document.getElementById("Soft-Job-Content");
         originSoftJobResult.innerHTML = "herokuapp request error";
     };
     xmlHttp.open("GET", "https://www.ptt.cc/bbs/Soft_Job/search?q=" + query, true); // false for synchronous request
@@ -65,7 +65,7 @@ function draw_Soft_Compoment(htmlText) {
     let array = response.getElementsByClassName("r-ent");
 
     // create UI
-    let parent = document.getElementById("Soft Job Content");
+    let parent = document.getElementById("Soft-Job-Content");
     for (let index = 0; index < array.length; index++) {
         let card = document.createElement("div");
         card.setAttribute("class", "card");
@@ -107,7 +107,7 @@ function search_tech_job(query) {
         }
     }
     xmlHttp.onerror = function(e) {
-        let originTechJobResult = document.getElementById("Tech Job Content");
+        let originTechJobResult = document.getElementById("Tech-Job-Content");
         originTechJobResult.innerHTML = "herokuapp request error";
     };
     xmlHttp.open("GET", "https://www.ptt.cc/bbs/Tech_Job/search?q=" + query, true); // false for synchronous request
@@ -121,7 +121,7 @@ function draw_Tech_Compoment(htmlText) {
     let array = response.getElementsByClassName("r-ent");
 
     // create UI
-    let parent = document.getElementById("Tech Job Content");
+    let parent = document.getElementById("Tech-Job-Content");
     for (let index = 0; index < array.length; index++) {
         let card = document.createElement("div");
         card.setAttribute("class", "card");
@@ -146,29 +146,8 @@ function draw_Tech_Compoment(htmlText) {
     }
 }
 
-// 設定 tab button
+// 設定搜尋功能
 document.addEventListener('DOMContentLoaded', function () {
-    var softButton = document.getElementById('Soft Job Tab');
-    var techButton = document.getElementById('Tech Job Tab');
-    var softContent = document.getElementById('Soft Job');
-    var techContent = document.getElementById('Tech Job');
-    // onClick's logic below:
-    softButton.addEventListener('click', function () {
-        softContent.style.display = "block";
-        techContent.style.display = "none";
-        softButton.className += " active";
-        techButton.className = techButton.className.replace(" active", "");
-    });
-    techButton.addEventListener('click', function () {
-        techContent.style.display = "block";
-        softContent.style.display = "none";
-        techButton.className += " active";
-        softButton.className = softButton.className.replace(" active", "");
-    });
-
-    // 預設先開啟 softbutton
-    softButton.click();
-
     let researchJobButton = document.getElementById("Research Job");
     researchJobButton.addEventListener('click', function () {
         researchJob();
@@ -181,8 +160,8 @@ function researchJob() {
     }
     let newQuery = document.getElementById("Job Query").value;
 
-    let originSoftJobResult = document.getElementById("Soft Job Content");
-    let originTechJobResult = document.getElementById("Tech Job Content");
+    let originSoftJobResult = document.getElementById("Soft-Job-Content");
+    let originTechJobResult = document.getElementById("Tech-Job-Content");
 
     let softLoader = document.getElementById("Soft Job Loader");
     let techLoader = document.getElementById("Tech Job Loader");

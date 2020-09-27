@@ -17,15 +17,9 @@
           "css": ["job.css"],
           "js": ["job.js"]
         }
-      ],
+    ],
     "web_accessible_resources": ["popup.html"],
-    "background": {
-        "scripts": [
-            "background.js"
-        ],
-        "persistent": false
-    },
-    "page_action": {
+    "browser_action": {
         "default_popup": "index.html",
         "default_icon": "App icon.png"
     }
