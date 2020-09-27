@@ -1,0 +1,21 @@
+#Job {
+    height: 420px;
+    width: 420px;
+    z-index: 999999999999999;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+}
+
+#header {
+    height: 6%;
+    width: 100%;
+    background-color: gray;
+}
+
+#iframe {
+    height: 94%;
+    width: 100%;
+}

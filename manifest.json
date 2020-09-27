@@ -1,0 +1,32 @@
+{
+    "name": "104 PTT 工作評論",
+    "description": "pudding design",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "declarativeContent",
+        "storage",
+        "http://*/",
+        "https://*/"
+    ],
+    "content_scripts": [
+        {
+          "matches": ["https://www.104.com.tw/company/*"],
+          "css": ["job.css"],
+          "js": ["job.js"]
+        }
+      ],
+    "web_accessible_resources": ["popup.html"],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "page_action": {
+        "default_popup": "index.html",
+        "default_icon": "App icon.png"
+    }
+}
