@@ -4,6 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="three-party/css/bootstrap.min.css">
+    <link href="three-party/fontawesome/css/all.css" rel="stylesheet">
     <script type="text/javascript" src="three-party/js/jquery-3.5.1.slim.min.js"></script>
     <script type="text/javascript" src="three-party/js/bootstrap.min.js"></script>
     <style>
@@ -12,7 +13,7 @@
             width: 98%;
             margin-top: 1%;
             margin-left: 1%;
-            /* overflow-y: auto; */
+            overflow-y: hidden;
         }
 
         /* Style the tab */
@@ -97,6 +98,9 @@
             border-radius: 50%;
             width: 30px;
             height: 30px;
+            position: fixed;
+            left: 190px;
+            top: 175px;
             animation: spin 2s linear infinite;
         }
 
@@ -129,11 +133,7 @@
                 <input id="Job Query" name="query" type="text" class="form-control" value="">
                 <div class="input-group-append">
                     <button id="Research Job" class="btn btn-outline-secondary" type="button">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-                        </svg>
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>

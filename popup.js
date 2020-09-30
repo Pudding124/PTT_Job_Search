@@ -152,12 +152,16 @@ document.addEventListener('DOMContentLoaded', function () {
     researchJobButton.addEventListener('click', function () {
         researchJob();
     });
+
+    let researchJobInput = document.getElementById("Job Query");
+    researchJobInput.addEventListener('keyup', function (event) {
+        if(event.keyCode === 13) {
+            researchJob();
+        }
+    });
 });
 
 function researchJob() {
-    if(event.key === 'Enter') {
-        alert(ele.value);        
-    }
     let newQuery = document.getElementById("Job Query").value;
 
     let originSoftJobResult = document.getElementById("Soft-Job-Content");
