@@ -4,11 +4,6 @@
     "version": "1.0",
     "manifest_version": 2,
     "permissions": [
-        "tabs",
-        "activeTab",
-        "declarativeContent",
-        "storage",
-        "http://*/",
         "https://*/"
     ],
     "content_scripts": [
