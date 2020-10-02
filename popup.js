@@ -50,6 +50,10 @@ function search_soft_job(query, pageNum) {
             loader.setAttribute("style", "display:none");
         }
     }
+    xmlHttp.onloadend = function() {
+        if(xmlHttp.status == 404) 
+            console.log("Not Found!");
+    }
     xmlHttp.onerror = function(e) {
         let originSoftJobResult = document.getElementById("Soft-Job-Content");
         originSoftJobResult.innerHTML = "herokuapp request error";
@@ -105,6 +109,10 @@ function search_tech_job(query, pageNum) {
             loader.setAttribute("style", "display:none");
             draw_Tech_Compoment(xmlHttp.responseText);
         }
+    }
+    xmlHttp.onloadend = function() {
+        if(xmlHttp.status == 404) 
+            console.log("Not Found!");
     }
     xmlHttp.onerror = function(e) {
         let originTechJobResult = document.getElementById("Tech-Job-Content");
