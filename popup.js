@@ -17,8 +17,8 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
 function serviceManager(query) {
     let newQuery = processQuery(query);
-    search_soft_job(newQuery);
-    search_tech_job(newQuery);
+    search_soft_job(newQuery, 1);
+    search_tech_job(newQuery, 1);
 }
 
 function processQuery(query) {
@@ -31,7 +31,7 @@ function processQuery(query) {
     return query;
 }
 
-function search_soft_job(query) {
+function search_soft_job(query, pageNum) {
 
     // let english_query = query.toString().replace(/[^A-Za-z0-9]+/g, ' ');
     // let chinese_query = query.toString().replace(/[^\u4e00-\u9fa5]/g, '');
@@ -54,7 +54,7 @@ function search_soft_job(query) {
         let originSoftJobResult = document.getElementById("Soft-Job-Content");
         originSoftJobResult.innerHTML = "herokuapp request error";
     };
-    xmlHttp.open("GET", "https://www.ptt.cc/bbs/Soft_Job/search?q=" + query, true); // false for synchronous request
+    xmlHttp.open("GET", "https://www.ptt.cc/bbs/Soft_Job/search?page=" + pageNum + "&q=" + query, true); // false for synchronous request
     xmlHttp.send(null);
 }
 
@@ -90,7 +90,7 @@ function draw_Soft_Compoment(htmlText) {
     }
 }
 
-function search_tech_job(query) {
+function search_tech_job(query, pageNum) {
 
     // 預設查詢
     let queryElement = document.getElementById("Job Query");
@@ -110,7 +110,7 @@ function search_tech_job(query) {
         let originTechJobResult = document.getElementById("Tech-Job-Content");
         originTechJobResult.innerHTML = "herokuapp request error";
     };
-    xmlHttp.open("GET", "https://www.ptt.cc/bbs/Tech_Job/search?q=" + query, true); // false for synchronous request
+    xmlHttp.open("GET", "https://www.ptt.cc/bbs/Tech_Job/search?page=" + pageNum + "&q=" + query, true); // false for synchronous request
     xmlHttp.send(null);
 }
 
@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function researchJob() {
     let newQuery = document.getElementById("Job Query").value;
+    let pageNum = document.getElementById("Ptt-Page").value;
 
     let originSoftJobResult = document.getElementById("Soft-Job-Content");
     let originTechJobResult = document.getElementById("Tech-Job-Content");
@@ -175,6 +176,6 @@ function researchJob() {
     softLoader.setAttribute("style", "display:block");
     techLoader.setAttribute("style", "display:block");
 
-    search_soft_job(newQuery);
-    search_tech_job(newQuery);
+    search_soft_job(newQuery, pageNum);
+    search_tech_job(newQuery, pageNum);
 }
