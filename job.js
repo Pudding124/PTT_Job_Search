@@ -7,7 +7,7 @@ dragElement(body);
 
 const iframe = document.createElement('iframe');
 iframe.id = 'iframe';
-iframe.sandbox = 'allow-scripts allow-same-origin allow-forms';
+iframe.sandbox = 'allow-popups allow-scripts allow-same-origin allow-forms';
 iframe.frameBorder = "0";
 iframe.src = chrome.runtime.getURL('popup.html');
 body.prepend(iframe);

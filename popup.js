@@ -50,11 +50,11 @@ function search_soft_job(query, pageNum) {
             loader.setAttribute("style", "display:none");
         }
     }
-    xmlHttp.onloadend = function() {
-        if(xmlHttp.status == 404) 
+    xmlHttp.onloadend = function () {
+        if (xmlHttp.status == 404)
             console.log("Not Found!");
     }
-    xmlHttp.onerror = function(e) {
+    xmlHttp.onerror = function (e) {
         let originSoftJobResult = document.getElementById("Soft-Job-Content");
         originSoftJobResult.innerHTML = "herokuapp request error";
     };
@@ -110,11 +110,11 @@ function search_tech_job(query, pageNum) {
             draw_Tech_Compoment(xmlHttp.responseText);
         }
     }
-    xmlHttp.onloadend = function() {
-        if(xmlHttp.status == 404) 
+    xmlHttp.onloadend = function () {
+        if (xmlHttp.status == 404)
             console.log("Not Found!");
     }
-    xmlHttp.onerror = function(e) {
+    xmlHttp.onerror = function (e) {
         let originTechJobResult = document.getElementById("Tech-Job-Content");
         originTechJobResult.innerHTML = "herokuapp request error";
     };
@@ -158,20 +158,38 @@ function draw_Tech_Compoment(htmlText) {
 document.addEventListener('DOMContentLoaded', function () {
     let researchJobButton = document.getElementById("Research Job");
     researchJobButton.addEventListener('click', function () {
+        document.getElementById("Ptt-Page").textContent = 1;
         researchJob();
     });
 
     let researchJobInput = document.getElementById("Job Query");
     researchJobInput.addEventListener('keyup', function (event) {
-        if(event.keyCode === 13) {
+        if (event.keyCode === 13) {
+            document.getElementById("Ptt-Page").textContent = 1;
             researchJob();
         }
+    });
+
+    let prePageButton = document.getElementById("pre-page");
+    prePageButton.addEventListener('click', function (event) {
+        let pageNum = parseInt(document.getElementById("Ptt-Page").textContent);
+        if (pageNum > 1) {
+            document.getElementById("Ptt-Page").textContent = pageNum - 1;
+            researchJob();
+        }
+    });
+
+    let nextPageButton = document.getElementById("next-page");
+    nextPageButton.addEventListener('click', function (event) {
+        let pageNum = parseInt(document.getElementById("Ptt-Page").textContent);
+        document.getElementById("Ptt-Page").textContent = pageNum + 1;
+        researchJob();
     });
 });
 
 function researchJob() {
     let newQuery = document.getElementById("Job Query").value;
-    let pageNum = document.getElementById("Ptt-Page").value;
+    let pageNum = document.getElementById("Ptt-Page").textContent;
 
     let originSoftJobResult = document.getElementById("Soft-Job-Content");
     let originTechJobResult = document.getElementById("Tech-Job-Content");
