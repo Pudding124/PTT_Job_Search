@@ -1,5 +1,5 @@
 #Job {
-    height: 430px;
+    height: 480px;
     width: 420px;
     z-index: 999999999999999;
     position: absolute;
@@ -17,7 +17,7 @@
     height: 8%;
     width: 100%;
     cursor: move;
-    background-color: #1E90FF;
+    background-color: #D3D3D3;
 }
 
 #iframe {

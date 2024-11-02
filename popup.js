@@ -7,12 +7,27 @@ const stopWord = [
 
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    // console.log('tabs', tabs);
     var tab = tabs[0];
     tab_title = tab.title;
-    chrome.tabs.executeScript(tab.id, {
-        code: 'document.querySelector("h1").textContent'
-    }, serviceManager);
+
+    chrome.scripting.executeScript(
+        {
+            target: { tabId: tabs[0].id },
+            function: () => {
+                const company = document.querySelector("h1").textContent
+                return company;
+            }
+        },
+        (res) => {
+            for (const { frameId, result } of res) {
+                if (result != null) {
+                    serviceManager(result)
+                } else {
+                    serviceManager("")
+                }
+            }
+        }
+    );
 });
 
 function serviceManager(query) {
