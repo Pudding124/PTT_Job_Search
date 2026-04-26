@@ -26,8 +26,12 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["popup.html"],
-            "matches": ["https://www.104.com.tw/*"]
+            "resources": [
+                "popup.html"
+            ],
+            "matches": [
+                "https://www.104.com.tw/*"
+            ]
         }
     ],
     "action": {

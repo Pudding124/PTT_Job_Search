@@ -1,26 +1,106 @@
 #Job {
-    height: 480px;
-    width: 420px;
-    z-index: 999999999999999;
-    position: absolute;
-    top: 30px;
-    right: 10px;
+    position: fixed;
+    right: 30px;
+    top: 50px;
+    z-index: 2147483647;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
     background-color: white;
-    box-shadow: 0px 0px 2px black;
-}
-
-#Job:hover {
-    box-shadow: 0px 0px 5px black;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    width: 420px;
+    height: 480px;
 }
 
 #header {
-    height: 8%;
     width: 100%;
-    cursor: move;
-    background-color: #D3D3D3;
+    height: 36px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#drag-handle {
+    flex-grow: 1;
+    height: 100%;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#drag-handle:active {
+    cursor: grabbing;
+}
+
+#drag-handle::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+}
+
+#outer-search-container {
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#outer-job-query {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 5px 32px 5px 14px;
+    outline: none;
+    width: 140px;
+    font-size: 13px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+}
+
+#outer-job-query::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+#outer-job-query:focus {
+    background: rgba(255, 255, 255, 0.98);
+    width: 175px;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+#outer-job-search-btn {
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#outer-job-search-btn:hover {
+    color: #8352d4;
+    transform: translateY(-50%) scale(1.1);
 }
 
 #iframe {
-    height: 92%;
-    width: 100%;
+    width: 100% !important;
+    height: calc(100% - 36px) !important;
+    border: none;
+    display: block;
 }
